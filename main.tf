@@ -15,3 +15,11 @@ resource "azurerm_resource_group" "example" {
   name     = "example"
   location = "West Europe"
 } 
+data "azurerm_storage_account" "example" {
+  name                = "packerimages"
+  resource_group_name = "packer-storage"
+}
+
+output "storage_account_tier" {
+  value = data.azurerm_storage_account.example.account_tier
+}
